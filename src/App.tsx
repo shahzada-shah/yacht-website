@@ -29,24 +29,24 @@ function App() {
   const [initialLoading, setInitialLoading] = useState(true);
 
   /**
-   * Fade out state for smooth transitions
+   * Blur-in animation state for smooth transitions
    */
-  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isBlurringIn, setIsBlurringIn] = useState(false);
 
   /**
-   * Handle initial page load with smooth fade out
+   * Handle initial page load with smooth blur-in transition
    */
   useEffect(() => {
-    const fadeTimer = setTimeout(() => {
-      setIsFadingOut(true);
-    }, 1200);
+    const blurTimer = setTimeout(() => {
+      setIsBlurringIn(true);
+    }, 1000);
 
     const removeTimer = setTimeout(() => {
       setInitialLoading(false);
-    }, 1800);
+    }, 1600);
 
     return () => {
-      clearTimeout(fadeTimer);
+      clearTimeout(blurTimer);
       clearTimeout(removeTimer);
     };
   }, []);
@@ -66,15 +66,23 @@ function App() {
 
   if (initialLoading) {
     return (
-      <div className={`transition-opacity duration-500 ${isFadingOut ? 'opacity-0' : 'opacity-100'}`}>
+      <div 
+        className={`fixed inset-0 z-[100] transition-all duration-700 ease-out ${
+          isBlurringIn ? 'opacity-0 blur-lg scale-105' : 'opacity-100 blur-0 scale-100'
+        }`}
+      >
         <Loader />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-
+    <div 
+      className="min-h-screen flex flex-col animate-blur-in"
+      style={{
+        animation: 'blurIn 0.8s ease-out forwards'
+      }}
+    >
       <Header />
       <main className="flex-1">
         <Routes>

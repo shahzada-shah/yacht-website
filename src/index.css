@@ -98,6 +98,19 @@
     }
   }
 
+  @keyframes blurIn {
+    from {
+      opacity: 0;
+      filter: blur(20px);
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1);
+    }
+  }
+
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
@@ -108,5 +121,9 @@
 
   .animate-fade-in-out {
     animation: fade-in-out 4s ease-in-out;
+  }
+
+  .animate-blur-in {
+    animation: blurIn 0.8s ease-out forwards;
   }
 }
