@@ -37,7 +37,7 @@ export const Header = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-blue-100/50 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Logo />
@@ -47,13 +47,13 @@ export const Header = () => {
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="relative">
               <button
-                className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 hover:scale-110 relative"
+                className="p-2 hover:bg-blue-50 rounded-full transition-all duration-200 hover:scale-110 relative"
                 aria-label="Shopping cart"
                 onClick={() => setIsCartOpen(!isCartOpen)}
               >
-                <ShoppingCart className="w-5 h-5 text-gray-700" />
+                <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-blue-700 transition-colors" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-gray-900 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-fade-in">
+                  <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-fade-in">
                     {totalItems}
                   </span>
                 )}
@@ -62,11 +62,11 @@ export const Header = () => {
             </div>
 
             <button
-              className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 hover:scale-110 relative"
+              className="p-2 hover:bg-blue-50 rounded-full transition-all duration-200 hover:scale-110 relative"
               aria-label="Favorites"
               onClick={() => setIsProfileOpen(!isProfileOpen)}
             >
-              <Heart className="w-5 h-5 text-gray-700" />
+              <Heart className="w-5 h-5 text-gray-700 hover:text-red-500 transition-colors" />
               {totalFavorites > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-fade-in">
                   {totalFavorites}
@@ -76,11 +76,11 @@ export const Header = () => {
 
             <div className="relative">
               <button
-                className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 hover:scale-110"
+                className="p-2 hover:bg-blue-50 rounded-full transition-all duration-200 hover:scale-110"
                 aria-label="User account"
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
               >
-                <User className="w-5 h-5 text-gray-700" />
+                <User className="w-5 h-5 text-gray-700 hover:text-blue-700 transition-colors" />
               </button>
               <ProfileDropdown isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
             </div>

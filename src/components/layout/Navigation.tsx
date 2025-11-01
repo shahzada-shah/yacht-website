@@ -51,8 +51,8 @@ export const Navigation = () => {
               {isHashLink ? (
                 <a
                   href={item.href}
-                  className={`text-sm transition-all duration-200 hover:text-gray-900 ${
-                    isActive ? 'text-gray-900 font-bold' : 'text-gray-600 font-medium'
+                  className={`text-sm transition-all duration-200 hover:text-blue-700 ${
+                    isActive ? 'text-blue-700 font-bold' : 'text-gray-600 font-medium'
                   }`}
                 >
                   {item.label}
@@ -60,8 +60,8 @@ export const Navigation = () => {
               ) : (
                 <Link
                   to={item.href}
-                  className={`text-sm transition-all duration-200 hover:text-gray-900 ${
-                    isActive ? 'text-gray-900 font-bold' : 'text-gray-600 font-medium'
+                  className={`text-sm transition-all duration-200 hover:text-blue-700 ${
+                    isActive ? 'text-blue-700 font-bold' : 'text-gray-600 font-medium'
                   }`}
                 >
                   {item.label}

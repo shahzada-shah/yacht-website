@@ -41,8 +41,14 @@ export const Hero = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        {/* Gradient overlay: dark left for text, bright right for yacht showcase */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 via-50% to-transparent"></div>
+        {/* Golden hour warmth overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-orange-300/5 to-yellow-200/10"></div>
+        
+        {/* Lens haze / gradient overlay: dark left for text, bright right for yacht showcase */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/75 via-slate-800/30 via-45% to-transparent"></div>
+        
+        {/* Subtle vignette for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-12 py-32">
