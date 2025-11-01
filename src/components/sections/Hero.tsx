@@ -51,7 +51,7 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-12 py-32">
+      <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-12 py-24 sm:py-32">
         <div className="max-w-3xl">
           <p className="text-xs sm:text-sm font-semibold text-white/90 uppercase tracking-[0.2em] mb-8 animate-fade-in">
             From Sailing Dreams to Unforgettable Escapes
