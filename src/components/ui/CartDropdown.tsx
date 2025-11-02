@@ -78,29 +78,19 @@ export const CartDropdown = ({ isOpen, onClose }: CartDropdownProps) => {
               {items.map((item) => (
                 <div key={item.id} className="border border-gray-200 rounded-xl p-4">
                   <div className="flex gap-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex-shrink-0">
-                      <svg
-                        className="w-full h-full"
-                        viewBox="0 0 80 80"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <line
-                          x1="0"
-                          y1="0"
-                          x2="80"
-                          y2="80"
-                          stroke="rgba(0,0,0,0.1)"
-                          strokeWidth="1"
-                        />
-                        <line
-                          x1="80"
-                          y1="0"
-                          x2="0"
-                          y2="80"
-                          stroke="rgba(0,0,0,0.1)"
-                          strokeWidth="1"
-                        />
-                      </svg>
+                    <div className="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex-shrink-0 overflow-hidden">
+                      {item.image ? (
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <svg
+                          className="w-full h-full"
+                          viewBox="0 0 80 80"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <line x1="0" y1="0" x2="80" y2="80" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
+                          <line x1="80" y1="0" x2="0" y2="80" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
+                        </svg>
+                      )}
                     </div>
 
                     <div className="flex-1 min-w-0">

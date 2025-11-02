@@ -98,29 +98,19 @@ export const ProfileDropdown = ({ isOpen, onClose }: ProfileDropdownProps) => {
                     className="border border-gray-200 rounded-lg p-3 hover:border-gray-300 transition-all duration-200"
                   >
                     <div className="flex gap-3">
-                      <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex-shrink-0">
-                        <svg
-                          className="w-full h-full"
-                          viewBox="0 0 64 64"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <line
-                            x1="0"
-                            y1="0"
-                            x2="64"
-                            y2="64"
-                            stroke="rgba(0,0,0,0.1)"
-                            strokeWidth="1"
-                          />
-                          <line
-                            x1="64"
-                            y1="0"
-                            x2="0"
-                            y2="64"
-                            stroke="rgba(0,0,0,0.1)"
-                            strokeWidth="1"
-                          />
-                        </svg>
+                      <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex-shrink-0 overflow-hidden">
+                        {yacht.image ? (
+                          <img src={yacht.image} alt={yacht.name} className="w-full h-full object-cover" />
+                        ) : (
+                          <svg
+                            className="w-full h-full"
+                            viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <line x1="0" y1="0" x2="64" y2="64" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
+                            <line x1="64" y1="0" x2="0" y2="64" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
+                          </svg>
+                        )}
                       </div>
 
                       <div className="flex-1 min-w-0">

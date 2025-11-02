@@ -5,6 +5,8 @@ import { CrewSection } from '../components/sections/CrewSection';
 import { ReviewsCarousel } from '../components/sections/ReviewsCarousel';
 import { FAQSection } from '../components/sections/FAQSection';
 import { RelatedYachtsCarousel } from '../components/sections/RelatedYachtsCarousel';
+import { useParams } from 'react-router-dom';
+import { YACHTS } from '../data/yachts';
 
 const hardcodedYacht = {
   id: '1',
@@ -23,10 +25,10 @@ const hardcodedYacht = {
 };
 
 const hardcodedCrew = [
-  { id: '1', name: 'John Miller', role: 'Captain', avatar_url: null },
-  { id: '2', name: 'Anna Lopez', role: 'First Mate', avatar_url: null },
-  { id: '3', name: 'Emily Carter', role: 'Stewardess', avatar_url: null },
-  { id: '4', name: 'Marco Rossi', role: 'Chef', avatar_url: null },
+  { id: '1', name: 'John Miller', role: 'Captain', avatar_url: '/yachts/crew/captain.png' },
+  { id: '2', name: 'Anna Lopez', role: 'First Mate', avatar_url: '/yachts/crew/firstmate.png' },
+  { id: '3', name: 'Emily Carter', role: 'Stewardess', avatar_url: '/yachts/crew/stewardess.png' },
+  { id: '4', name: 'Marco Rossi', role: 'Chef', avatar_url: '/yachts/crew/chef.png' },
 ];
 
 const hardcodedReviews = [
@@ -115,7 +117,22 @@ const hardcodedRelatedYachts = [
 ];
 
 export const YachtDetailPage = () => {
-  const yacht = hardcodedYacht;
+  const { id } = useParams();
+  const match = YACHTS.find((y) => y.id === (id || '')) || YACHTS[0];
+  const yacht = {
+    id: match.id,
+    name: match.name,
+    description: hardcodedYacht.description,
+    price_per_day: match.price,
+    year: match.year,
+    length_ft: match.length,
+    draft_ft: hardcodedYacht.draft_ft,
+    location: match.location,
+    cabins: match.cabins,
+    berths: Math.max(match.cabins * 2 - 1, match.guests),
+    guests: match.guests,
+    video_url: null,
+  };
   const crew = hardcodedCrew;
   const reviews = hardcodedReviews;
   const faqs = hardcodedFaqs;
@@ -132,7 +149,7 @@ export const YachtDetailPage = () => {
 
   return (
     <div className="min-h-screen">
-      <YachtDetailHero name={yacht.name} videoUrl={yacht.video_url} />
+      <YachtDetailHero id={yacht.id} name={yacht.name} videoUrl={yacht.video_url} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">

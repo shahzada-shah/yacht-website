@@ -30,24 +30,19 @@ export const AboutPage = () => {
   ];
 
   /**
-   * Gallery images placeholder array
+   * About page images
    */
-  const galleryImages = Array(8).fill(null);
+  const heroImage = '/about-us/ad_feature.png';
+  const galleryImages = Array.from({ length: 8 }, (_, i) =>
+    `/about-us/ad_${String(i + 1).padStart(2, '0')}.png`
+  );
 
   return (
     <div className="min-h-screen pt-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-          <div className="w-full aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 800 600"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              <line x1="0" y1="0" x2="800" y2="600" stroke="rgba(0,0,0,0.1)" strokeWidth="2" />
-              <line x1="800" y1="0" x2="0" y2="600" stroke="rgba(0,0,0,0.1)" strokeWidth="2" />
-            </svg>
+          <div className="w-full aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] relative">
+            <img src={heroImage} alt="About us featured" className="absolute inset-0 w-full h-full object-cover" />
           </div>
 
           <div>
@@ -85,39 +80,23 @@ export const AboutPage = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-          {galleryImages.slice(0, 4).map((_, index) => (
+          {galleryImages.slice(0, 4).map((src, index) => (
             <div
               key={index}
               className="aspect-[2/1] bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl overflow-hidden transition-transform duration-300 hover:scale-105"
             >
-              <svg
-                className="w-full h-full"
-                viewBox="0 0 400 200"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid meet"
-              >
-                <line x1="0" y1="0" x2="400" y2="200" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-                <line x1="400" y1="0" x2="0" y2="200" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-              </svg>
+              <img src={src} alt={`About gallery ${index + 1}`} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryImages.slice(4, 8).map((_, index) => (
+          {galleryImages.slice(4, 8).map((src, index) => (
             <div
               key={index + 4}
               className="aspect-[2/1] bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl overflow-hidden transition-transform duration-300 hover:scale-105"
             >
-              <svg
-                className="w-full h-full"
-                viewBox="0 0 400 200"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid meet"
-              >
-                <line x1="0" y1="0" x2="400" y2="200" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-                <line x1="400" y1="0" x2="0" y2="200" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-              </svg>
+              <img src={src} alt={`About gallery ${index + 5}`} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>

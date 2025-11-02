@@ -62,15 +62,11 @@ export const FAQSection = ({ faqs }: FAQSectionProps) => {
           </div>
 
           <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden">
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 800 600"
-              preserveAspectRatio="xMidYMid slice"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line x1="0" y1="0" x2="800" y2="600" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-              <line x1="800" y1="0" x2="0" y2="600" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-            </svg>
+            <img
+              src="/yachts/ad_01.png"
+              alt="Yacht journey information"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>

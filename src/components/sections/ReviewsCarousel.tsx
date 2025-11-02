@@ -59,15 +59,12 @@ export const ReviewsCarousel = ({ reviews }: ReviewsCarouselProps) => {
                 className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300"
               >
                 <div className="flex items-center justify-center mb-6">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                    <svg
-                      className="w-full h-full rounded-full"
-                      viewBox="0 0 80 80"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <line x1="0" y1="0" x2="80" y2="80" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-                      <line x1="80" y1="0" x2="0" y2="80" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-                    </svg>
+                  <div className="w-20 h-20 rounded-full overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <img
+                      src={`/yachts/testimony/test_${String(((Number(review.id) - 1) % 3) + 1).padStart(2, '0')}.png`}
+                      alt={review.reviewer_name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
 

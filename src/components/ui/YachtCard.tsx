@@ -1,6 +1,7 @@
 import { Heart, Calendar, Ruler, MapPin, Bed, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../../context/FavoritesContext';
+import { useState, useEffect, useRef } from 'react';
 
 /**
  * YachtCard component props
@@ -15,6 +16,8 @@ import { useFavorites } from '../../context/FavoritesContext';
  * @property {number} guests - Maximum guest capacity
  * @property {'Pre-owned' | 'New'} [condition] - Yacht condition status
  * @property {boolean} [isNew] - Whether the yacht is new (defaults to false)
+ * @property {number} [index] - Optional index for staggered animation delay
+ * @property {string} [image] - Path to yacht image
  */
 interface YachtCardProps {
   id?: string;
@@ -27,6 +30,8 @@ interface YachtCardProps {
   guests: number;
   condition?: 'Pre-owned' | 'New';
   isNew?: boolean;
+  index?: number;
+  image?: string;
 }
 
 /**
@@ -66,9 +71,50 @@ export const YachtCard = ({
   guests,
   condition,
   isNew = false,
+  index = 0,
+  image,
 }: YachtCardProps) => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const favorited = id ? isFavorite(id) : false;
+  const [isVisible, setIsVisible] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  // Stable, one-time animation delay so re-renders/resizing don't restart the animation
+  const initialDelayRef = useRef<string>('0s');
+  if (initialDelayRef.current === '0s') {
+    initialDelayRef.current = `${index * 0.12}s`;
+  }
+
+  /**
+   * Intersection Observer to trigger animation when card enters viewport
+   */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -15% 0px',
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
 
   /**
    * Handles toggling favorite status
@@ -88,23 +134,41 @@ export const YachtCard = ({
         location,
         cabins,
         guests,
+        image,
       });
     }
   };
   const cardContent = (
-    <article className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <article 
+      ref={cardRef}
+      className={`group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
+        isVisible ? 'yacht-card-revealed' : 'yacht-card-hidden'
+      }`}
+      style={{
+        transitionDelay: isVisible ? initialDelayRef.current : '0s',
+      }}
+    >
       <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 400 300"
-            preserveAspectRatio="xMidYMid slice"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line x1="0" y1="0" x2="400" y2="300" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-            <line x1="400" y1="0" x2="0" y2="300" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
-          </svg>
-        </div>
+        {image && !imageError ? (
+          <img
+            src={image}
+            alt={name}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <svg
+              className="w-full h-full"
+              viewBox="0 0 400 300"
+              preserveAspectRatio="xMidYMid slice"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line x1="0" y1="0" x2="400" y2="300" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
+              <line x1="400" y1="0" x2="0" y2="300" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
+            </svg>
+          </div>
+        )}
 
         <button
           onClick={handleFavoriteClick}

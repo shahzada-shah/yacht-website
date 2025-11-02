@@ -21,6 +21,7 @@ export interface FavoriteYacht {
   location: string;
   cabins: number;
   guests: number;
+  image?: string;
 }
 
 /**

@@ -15,6 +15,8 @@ import { SearchFilters } from './SearchSection';
  * @property {'Pre-owned' | 'New'} [condition] - Yacht condition
  * @property {boolean} [isNew] - Whether yacht is new
  * @property {string} [type] - Yacht type classification
+ * @property {string} [image] - Path to yacht main image
+ * @property {string[]} [images] - Array of additional image paths
  */
 interface Yacht {
   id: string;
@@ -28,6 +30,8 @@ interface Yacht {
   condition?: 'Pre-owned' | 'New';
   isNew?: boolean;
   type?: string;
+  image?: string;
+  images?: string[];
 }
 
 /**
@@ -45,6 +49,13 @@ const yachts: Yacht[] = [
     guests: 6,
     condition: 'Pre-owned',
     type: 'Motor Yacht',
+    image: '/yachts/1/boat_01_01.png',
+    images: [
+      '/yachts/1/boat_01_01.png',
+      '/yachts/1/boat_01_02.png',
+      '/yachts/1/boat_01_03.png',
+      '/yachts/1/boat_01_04.png',
+    ],
   },
   {
     id: '2',
@@ -57,6 +68,13 @@ const yachts: Yacht[] = [
     guests: 8,
     isNew: true,
     type: 'Sailing Yacht',
+    image: '/yachts/2/boat_01_01.png',
+    images: [
+      '/yachts/2/2_1.png',
+      '/yachts/2/2_2.png',
+      '/yachts/2/2_3.png',
+      '/yachts/2/2_4.png',
+    ],
   },
   {
     id: '3',
@@ -69,6 +87,13 @@ const yachts: Yacht[] = [
     guests: 10,
     condition: 'Pre-owned',
     type: 'Luxury Yacht',
+    image: '/yachts/3/boat_01_01.png',
+    images: [
+      '/yachts/3/3_1.png',
+      '/yachts/3/3_2.png',
+      '/yachts/3/3_3.png',
+      '/yachts/3/3_4.png',
+    ],
   },
   {
     id: '4',
@@ -81,6 +106,13 @@ const yachts: Yacht[] = [
     guests: 12,
     condition: 'Pre-owned',
     type: 'Motor Yacht',
+    image: '/yachts/4/boat_01_01.png',
+    images: [
+      '/yachts/4/4_1.png',
+      '/yachts/4/4_2.png',
+      '/yachts/4/4_3.png',
+      '/yachts/4/4_4.png',
+    ],
   },
   {
     id: '5',
@@ -93,6 +125,13 @@ const yachts: Yacht[] = [
     guests: 8,
     isNew: true,
     type: 'Catamaran',
+    image: '/yachts/5/boat_01_01.png',
+    images: [
+      '/yachts/5/5_1.png',
+      '/yachts/5/5_2.png',
+      '/yachts/5/5_3.png',
+      '/yachts/5/5_4.png',
+    ],
   },
   {
     id: '6',
@@ -105,6 +144,13 @@ const yachts: Yacht[] = [
     guests: 14,
     condition: 'Pre-owned',
     type: 'Luxury Yacht',
+    image: '/yachts/6/boat_01_01.png',
+    images: [
+      '/yachts/6/6_1.png',
+      '/yachts/6/6_2.png',
+      '/yachts/6/6_3.png',
+      '/yachts/6/6_4.png',
+    ],
   },
   {
     id: '7',
@@ -117,6 +163,13 @@ const yachts: Yacht[] = [
     guests: 6,
     isNew: true,
     type: 'Sailing Yacht',
+    image: '/yachts/7/boat_01_01.png',
+    images: [
+      '/yachts/7/7_1.png',
+      '/yachts/7/7_2.png',
+      '/yachts/7/7_3.png',
+      '/yachts/7/7_4.png',
+    ],
   },
   {
     id: '8',
@@ -129,6 +182,13 @@ const yachts: Yacht[] = [
     guests: 10,
     condition: 'Pre-owned',
     type: 'Motor Yacht',
+    image: '/yachts/8/boat_01_01.png',
+    images: [
+      '/yachts/8/8_1.png',
+      '/yachts/8/8_2.png',
+      '/yachts/8/8_3.png',
+      '/yachts/8/8_4.png',
+    ],
   },
 ];
 
@@ -222,7 +282,7 @@ export const YachtListings = ({ filters }: YachtListingsProps) => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredYachts.map((yacht) => (
+            {filteredYachts.map((yacht, index) => (
               <YachtCard
                 key={yacht.id}
                 id={yacht.id}
@@ -235,6 +295,8 @@ export const YachtListings = ({ filters }: YachtListingsProps) => {
                 guests={yacht.guests}
                 condition={yacht.condition}
                 isNew={yacht.isNew}
+                image={yacht.image}
+                index={index}
               />
             ))}
           </div>

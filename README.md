@@ -130,6 +130,25 @@ npm run build
 npm run preview  # Preview production build locally
 ```
 
+## 📦 Assets & Mapping
+
+Images are placed in `public/` and referenced with absolute paths.
+
+- Yachts: `/yachts/{id}/boat_01_01.png` (primary card image). Detail hero may use other variants (`boat_01_02.png`–`boat_01_04.png`).
+- Services: `/services/service_01.png`, `/services/service_02.png`, `/services/service_03.png`.
+- Crew: `/yachts/crew/{captain|firstmate|stewardess|chef}.png`.
+- Testimony: `/yachts/testimony/test_01.png` … `test_03.png`.
+
+Where images appear:
+
+- Listings & Related carousel: `/yachts/{id}/boat_01_01.png`.
+- Cart items: services/yachts push their `image` on add; thumbnails shown in Cart.
+- Favorites: `image` stored with favorite and rendered in Profile dropdown.
+
+## 🎬 Animations
+
+Card reveal is bottom → top with a 900ms smooth transition and a 120ms single-card stagger. Animations are transition-based (no re-trigger on reflow) and respect `prefers-reduced-motion`.
+
 ## 💻 Skills Demonstrated
 
 ### Frontend Development

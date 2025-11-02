@@ -74,6 +74,7 @@ export const RelatedYachtsCarousel = ({ yachts, currentYachtId }: RelatedYachtsC
             {visibleYachts.map((yacht) => (
               <YachtCard
                 key={yacht.id}
+                id={yacht.id}
                 name={yacht.name}
                 price={yacht.price_per_day}
                 year={yacht.year}
@@ -83,6 +84,7 @@ export const RelatedYachtsCarousel = ({ yachts, currentYachtId }: RelatedYachtsC
                 guests={yacht.guests}
                 condition={yacht.condition || undefined}
                 isNew={yacht.is_new}
+                image={`/yachts/${yacht.id}/boat_01_01.png`}
               />
             ))}
           </div>

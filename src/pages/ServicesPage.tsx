@@ -18,6 +18,7 @@ interface Service {
   description: string;
   pricing: string;
   badges: string[];
+  image: string;
 }
 
 /**
@@ -32,6 +33,7 @@ const services: Service[] = [
       'Get certified to dive with our expert instructors! Learn essential skills, explore local dive sites, and discover the wonders of the underwater world.',
     pricing: '$80-$150 per dive | $400-$600 per course',
     badges: ['Beginner', 'Professional'],
+    image: '/services/service_01.png',
   },
   {
     icon: Anchor,
@@ -41,6 +43,7 @@ const services: Service[] = [
       'Get hands-on experience in steering, trimming sails, and understanding wind patterns. Perfect start for future skippers or those who want to enjoy sailing as a hobby.',
     pricing: '$300-$600 per weekend course | $1200-$1500 per full program',
     badges: ['Beginner', 'Amateur'],
+    image: '/services/service_02.png',
   },
   {
     icon: Anchor,
@@ -50,6 +53,7 @@ const services: Service[] = [
       'Intensive training to prepare for your international skipper license. Includes navigation, safety at sea, docking, and night sailing.',
     pricing: '$700-$1500 per course (5-7 days)',
     badges: ['Amateur', 'Professional'],
+    image: '/services/service_03.png',
   },
 ];
 
@@ -81,6 +85,7 @@ export const ServicesPage = () => {
       name: service.subtitle,
       type: 'service',
       price: parseInt(service.pricing.match(/\d+/)?.[0] || '0'),
+      image: service.image,
       metadata: {
         description: service.description,
         badges: service.badges,
@@ -131,16 +136,12 @@ export const ServicesPage = () => {
                 </div>
               </div>
 
-              <div className="relative aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-gray-200 to-gray-300">
-                <svg
-                  className="w-full h-full"
-                  viewBox="0 0 600 400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  preserveAspectRatio="xMidYMid meet"
-                >
-                  <line x1="0" y1="0" x2="600" y2="400" stroke="rgba(0,0,0,0.1)" strokeWidth="2" />
-                  <line x1="600" y1="0" x2="0" y2="400" stroke="rgba(0,0,0,0.1)" strokeWidth="2" />
-                </svg>
+              <div className="relative aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden">
+                <img
+                  src={`/services/service_${String(index + 1).padStart(2, '0')}.png`}
+                  alt={`${service.subtitle} image`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
 
                 <button
                   onClick={() => handleAddToCart(service)}

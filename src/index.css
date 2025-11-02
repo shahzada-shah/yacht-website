@@ -126,4 +126,39 @@
   .animate-blur-in {
     animation: blurIn 0.8s ease-out forwards;
   }
+
+  @keyframes float-in {
+    from {
+      opacity: 0;
+      transform: translateY(60px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Smooth reveal without keyframes to avoid re-trigger/flicker */
+  .yacht-card-hidden {
+    opacity: 0;
+    transform: translateY(16px) scale(0.99) translateZ(0);
+  }
+
+  .yacht-card-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1) translateZ(0);
+    transition: transform 900ms cubic-bezier(0.25, 0.85, 0.25, 1),
+                opacity 900ms cubic-bezier(0.25, 0.85, 0.25, 1);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .yacht-card-hidden,
+    .yacht-card-revealed {
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
 }
