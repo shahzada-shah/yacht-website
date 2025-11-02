@@ -192,6 +192,21 @@ npm run lint       # Run ESLint
 npm run typecheck  # Check TypeScript types
 ```
 
+## ⚙️ CI/CD (GitHub Actions & Pages)
+
+This repo includes two GitHub Actions workflows:
+
+- `.github/workflows/ci.yml` – installs deps, typechecks, lints and builds on PRs and pushes to `main`.
+- `.github/workflows/deploy.yml` – builds and deploys `dist/` to GitHub Pages on push to `main`.
+
+Steps to enable Pages:
+
+1. Push this repo to GitHub.
+2. In GitHub → Settings → Pages, set Source to “GitHub Actions”.
+3. Merge to `main` – the `Deploy to GitHub Pages` workflow will publish your site.
+
+If your Pages site is served under `https://<user>.github.io/<repo>/`, ensure any hardcoded links are absolute or update Vite `base` as needed.
+
 ## 🔮 Future Enhancements
 
 - [ ] User authentication and profiles
