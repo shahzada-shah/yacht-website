@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { useState } from 'react';
+import { getAssetPath } from '../../lib/utils';
 
 interface Review {
   id: string;
@@ -61,7 +62,7 @@ export const ReviewsCarousel = ({ reviews }: ReviewsCarouselProps) => {
                 <div className="flex items-center justify-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                     <img
-                      src={`/yachts/testimony/test_${String(((Number(review.id) - 1) % 3) + 1).padStart(2, '0')}.png`}
+                      src={getAssetPath(`/yachts/testimony/test_${String(((Number(review.id) - 1) % 3) + 1).padStart(2, '0')}.png`)}
                       alt={review.reviewer_name}
                       className="w-full h-full object-cover"
                     />

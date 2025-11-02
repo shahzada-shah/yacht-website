@@ -1,5 +1,6 @@
 import { Check, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { getAssetPath } from '../lib/utils';
 
 /**
  * AboutPage Component
@@ -32,9 +33,9 @@ export const AboutPage = () => {
   /**
    * About page images
    */
-  const heroImage = '/about-us/ad_feature.png';
+  const heroImage = getAssetPath('/about-us/ad_feature.png');
   const galleryImages = Array.from({ length: 8 }, (_, i) =>
-    `/about-us/ad_${String(i + 1).padStart(2, '0')}.png`
+    getAssetPath(`/about-us/ad_${String(i + 1).padStart(2, '0')}.png`)
   );
 
   return (

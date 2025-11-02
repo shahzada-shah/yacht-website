@@ -1,6 +1,7 @@
 import { Calendar, Users, Plus } from 'lucide-react';
 import { useState } from 'react';
 import { useCart } from '../../context/CartContext';
+import { getAssetPath } from '../../lib/utils';
 import { useParams } from 'react-router-dom';
 
 /**
@@ -68,7 +69,7 @@ export const BookingSidebar = ({ pricePerDay, yachtName }: BookingSidebarProps) 
       name: `${yachtName} - ${days} days`,
       type: 'yacht',
       price: total,
-      image: id ? `/yachts/${id}/boat_01_01.png` : undefined,
+      image: id ? getAssetPath(`/yachts/${id}/boat_01_01.png`) : undefined,
       metadata: {
         pricePerDay,
         days,

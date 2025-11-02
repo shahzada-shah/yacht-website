@@ -1,5 +1,6 @@
 import { Waves, Anchor, Plus } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { getAssetPath } from '../lib/utils';
 
 /**
  * Service item interface
@@ -33,7 +34,7 @@ const services: Service[] = [
       'Get certified to dive with our expert instructors! Learn essential skills, explore local dive sites, and discover the wonders of the underwater world.',
     pricing: '$80-$150 per dive | $400-$600 per course',
     badges: ['Beginner', 'Professional'],
-    image: '/services/service_01.png',
+    image: getAssetPath('/services/service_01.png'),
   },
   {
     icon: Anchor,
@@ -43,7 +44,7 @@ const services: Service[] = [
       'Get hands-on experience in steering, trimming sails, and understanding wind patterns. Perfect start for future skippers or those who want to enjoy sailing as a hobby.',
     pricing: '$300-$600 per weekend course | $1200-$1500 per full program',
     badges: ['Beginner', 'Amateur'],
-    image: '/services/service_02.png',
+    image: getAssetPath('/services/service_02.png'),
   },
   {
     icon: Anchor,
@@ -53,7 +54,7 @@ const services: Service[] = [
       'Intensive training to prepare for your international skipper license. Includes navigation, safety at sea, docking, and night sailing.',
     pricing: '$700-$1500 per course (5-7 days)',
     badges: ['Amateur', 'Professional'],
-    image: '/services/service_03.png',
+    image: getAssetPath('/services/service_03.png'),
   },
 ];
 
@@ -138,7 +139,7 @@ export const ServicesPage = () => {
 
               <div className="relative aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden">
                 <img
-                  src={`/services/service_${String(index + 1).padStart(2, '0')}.png`}
+                  src={getAssetPath(`/services/service_${String(index + 1).padStart(2, '0')}.png`)}
                   alt={`${service.subtitle} image`}
                   className="absolute inset-0 w-full h-full object-cover"
                 />

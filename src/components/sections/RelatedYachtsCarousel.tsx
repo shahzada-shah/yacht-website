@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { YachtCard } from '../ui/YachtCard';
+import { getAssetPath } from '../../lib/utils';
 
 interface RelatedYacht {
   id: string;
@@ -84,7 +85,7 @@ export const RelatedYachtsCarousel = ({ yachts, currentYachtId }: RelatedYachtsC
                 guests={yacht.guests}
                 condition={yacht.condition || undefined}
                 isNew={yacht.is_new}
-                image={`/yachts/${yacht.id}/boat_01_01.png`}
+                image={getAssetPath(`/yachts/${yacht.id}/boat_01_01.png`)}
               />
             ))}
           </div>

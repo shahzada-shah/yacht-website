@@ -7,6 +7,7 @@ import { FAQSection } from '../components/sections/FAQSection';
 import { RelatedYachtsCarousel } from '../components/sections/RelatedYachtsCarousel';
 import { useParams } from 'react-router-dom';
 import { YACHTS } from '../data/yachts';
+import { getAssetPath } from '../lib/utils';
 
 const hardcodedYacht = {
   id: '1',
@@ -25,10 +26,10 @@ const hardcodedYacht = {
 };
 
 const hardcodedCrew = [
-  { id: '1', name: 'John Miller', role: 'Captain', avatar_url: '/yachts/crew/captain.png' },
-  { id: '2', name: 'Anna Lopez', role: 'First Mate', avatar_url: '/yachts/crew/firstmate.png' },
-  { id: '3', name: 'Emily Carter', role: 'Stewardess', avatar_url: '/yachts/crew/stewardess.png' },
-  { id: '4', name: 'Marco Rossi', role: 'Chef', avatar_url: '/yachts/crew/chef.png' },
+  { id: '1', name: 'John Miller', role: 'Captain', avatar_url: getAssetPath('/yachts/crew/captain.png') },
+  { id: '2', name: 'Anna Lopez', role: 'First Mate', avatar_url: getAssetPath('/yachts/crew/firstmate.png') },
+  { id: '3', name: 'Emily Carter', role: 'Stewardess', avatar_url: getAssetPath('/yachts/crew/stewardess.png') },
+  { id: '4', name: 'Marco Rossi', role: 'Chef', avatar_url: getAssetPath('/yachts/crew/chef.png') },
 ];
 
 const hardcodedReviews = [

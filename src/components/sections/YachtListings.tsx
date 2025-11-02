@@ -1,5 +1,6 @@
 import { YachtCard } from '../ui/YachtCard';
 import { SearchFilters } from './SearchSection';
+import { getAssetPath } from '../../lib/utils';
 
 /**
  * Yacht data interface
@@ -49,12 +50,12 @@ const yachts: Yacht[] = [
     guests: 6,
     condition: 'Pre-owned',
     type: 'Motor Yacht',
-    image: '/yachts/1/boat_01_01.png',
+    image: getAssetPath('/yachts/1/boat_01_01.png'),
     images: [
-      '/yachts/1/boat_01_01.png',
-      '/yachts/1/boat_01_02.png',
-      '/yachts/1/boat_01_03.png',
-      '/yachts/1/boat_01_04.png',
+      getAssetPath('/yachts/1/boat_01_01.png'),
+      getAssetPath('/yachts/1/boat_01_02.png'),
+      getAssetPath('/yachts/1/boat_01_03.png'),
+      getAssetPath('/yachts/1/boat_01_04.png'),
     ],
   },
   {
@@ -68,12 +69,12 @@ const yachts: Yacht[] = [
     guests: 8,
     isNew: true,
     type: 'Sailing Yacht',
-    image: '/yachts/2/boat_01_01.png',
+    image: getAssetPath('/yachts/2/boat_01_01.png'),
     images: [
-      '/yachts/2/2_1.png',
-      '/yachts/2/2_2.png',
-      '/yachts/2/2_3.png',
-      '/yachts/2/2_4.png',
+      getAssetPath('/yachts/2/2_1.png'),
+      getAssetPath('/yachts/2/2_2.png'),
+      getAssetPath('/yachts/2/2_3.png'),
+      getAssetPath('/yachts/2/2_4.png'),
     ],
   },
   {
@@ -87,12 +88,12 @@ const yachts: Yacht[] = [
     guests: 10,
     condition: 'Pre-owned',
     type: 'Luxury Yacht',
-    image: '/yachts/3/boat_01_01.png',
+    image: getAssetPath('/yachts/3/boat_01_01.png'),
     images: [
-      '/yachts/3/3_1.png',
-      '/yachts/3/3_2.png',
-      '/yachts/3/3_3.png',
-      '/yachts/3/3_4.png',
+      getAssetPath('/yachts/3/3_1.png'),
+      getAssetPath('/yachts/3/3_2.png'),
+      getAssetPath('/yachts/3/3_3.png'),
+      getAssetPath('/yachts/3/3_4.png'),
     ],
   },
   {
@@ -106,12 +107,12 @@ const yachts: Yacht[] = [
     guests: 12,
     condition: 'Pre-owned',
     type: 'Motor Yacht',
-    image: '/yachts/4/boat_01_01.png',
+    image: getAssetPath('/yachts/4/boat_01_01.png'),
     images: [
-      '/yachts/4/4_1.png',
-      '/yachts/4/4_2.png',
-      '/yachts/4/4_3.png',
-      '/yachts/4/4_4.png',
+      getAssetPath('/yachts/4/4_1.png'),
+      getAssetPath('/yachts/4/4_2.png'),
+      getAssetPath('/yachts/4/4_3.png'),
+      getAssetPath('/yachts/4/4_4.png'),
     ],
   },
   {
@@ -125,12 +126,12 @@ const yachts: Yacht[] = [
     guests: 8,
     isNew: true,
     type: 'Catamaran',
-    image: '/yachts/5/boat_01_01.png',
+    image: getAssetPath('/yachts/5/boat_01_01.png'),
     images: [
-      '/yachts/5/5_1.png',
-      '/yachts/5/5_2.png',
-      '/yachts/5/5_3.png',
-      '/yachts/5/5_4.png',
+      getAssetPath('/yachts/5/5_1.png'),
+      getAssetPath('/yachts/5/5_2.png'),
+      getAssetPath('/yachts/5/5_3.png'),
+      getAssetPath('/yachts/5/5_4.png'),
     ],
   },
   {
@@ -144,12 +145,12 @@ const yachts: Yacht[] = [
     guests: 14,
     condition: 'Pre-owned',
     type: 'Luxury Yacht',
-    image: '/yachts/6/boat_01_01.png',
+    image: getAssetPath('/yachts/6/boat_01_01.png'),
     images: [
-      '/yachts/6/6_1.png',
-      '/yachts/6/6_2.png',
-      '/yachts/6/6_3.png',
-      '/yachts/6/6_4.png',
+      getAssetPath('/yachts/6/6_1.png'),
+      getAssetPath('/yachts/6/6_2.png'),
+      getAssetPath('/yachts/6/6_3.png'),
+      getAssetPath('/yachts/6/6_4.png'),
     ],
   },
   {
@@ -163,12 +164,12 @@ const yachts: Yacht[] = [
     guests: 6,
     isNew: true,
     type: 'Sailing Yacht',
-    image: '/yachts/7/boat_01_01.png',
+    image: getAssetPath('/yachts/7/boat_01_01.png'),
     images: [
-      '/yachts/7/7_1.png',
-      '/yachts/7/7_2.png',
-      '/yachts/7/7_3.png',
-      '/yachts/7/7_4.png',
+      getAssetPath('/yachts/7/7_1.png'),
+      getAssetPath('/yachts/7/7_2.png'),
+      getAssetPath('/yachts/7/7_3.png'),
+      getAssetPath('/yachts/7/7_4.png'),
     ],
   },
   {
@@ -182,12 +183,12 @@ const yachts: Yacht[] = [
     guests: 10,
     condition: 'Pre-owned',
     type: 'Motor Yacht',
-    image: '/yachts/8/boat_01_01.png',
+    image: getAssetPath('/yachts/8/boat_01_01.png'),
     images: [
-      '/yachts/8/8_1.png',
-      '/yachts/8/8_2.png',
-      '/yachts/8/8_3.png',
-      '/yachts/8/8_4.png',
+      getAssetPath('/yachts/8/8_1.png'),
+      getAssetPath('/yachts/8/8_2.png'),
+      getAssetPath('/yachts/8/8_3.png'),
+      getAssetPath('/yachts/8/8_4.png'),
     ],
   },
 ];

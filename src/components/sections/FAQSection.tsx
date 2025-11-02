@@ -1,5 +1,6 @@
 import { Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
+import { getAssetPath } from '../../lib/utils';
 
 interface FAQ {
   id: string;
@@ -63,7 +64,7 @@ export const FAQSection = ({ faqs }: FAQSectionProps) => {
 
           <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden">
             <img
-              src="/yachts/ad_01.png"
+              src={getAssetPath('/yachts/ad_01.png')}
               alt="Yacht journey information"
               className="absolute inset-0 w-full h-full object-cover"
             />

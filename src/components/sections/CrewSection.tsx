@@ -1,4 +1,5 @@
 import { User } from 'lucide-react';
+import { getAssetPath } from '../../lib/utils';
 
 interface CrewMember {
   id: string;
@@ -52,7 +53,7 @@ export const CrewSection = ({ crewMembers }: CrewSectionProps) => {
 
           <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden">
             <img
-              src={'/yachts/crew/crew-photo.png'}
+              src={getAssetPath('/yachts/crew/crew-photo.png')}
               alt="Crew"
               className="absolute inset-0 w-full h-full object-cover"
             />
